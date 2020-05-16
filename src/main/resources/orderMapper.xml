@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dbs.test.orderMapper">
+	<select id="getOrder" parameterType="int" resultType="com.dbs.demo.bean.Order">
+			select order_id orderid, order_no orderno,order_price price from t_order where order_id =#{id}
+	</select>
+	<select id="getOrderResultMap" parameterType="int" resultMap="orderResultMap">
+		select * from t_order where order_id=#{id}
+	</select>
+	<resultMap type="com.dbs.demo.bean.Order" id="orderResultMap">
+		<id property="orderid" column="order_id"></id>
+		<result property="orderno" column="order_no"></result>
+		<result property="price" column="order_price"/>
+	</resultMap>
+	
+	<!-- 作业：把表换成emp和dept，要求：用注解和xml实现多表查询 -->
+</mapper>
